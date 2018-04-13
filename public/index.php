@@ -21,7 +21,7 @@ $response = (new Response('Hello ' . $name . '!'))
 
 header('HTTP/1.0' . $response->getStatusCode() . ' ' . $response->getReasonPhrase());
 foreach($response->getHeaders() as $name => $value) {
-    header($name . ':' . $value);
+    header($name . ':' . implode(', ', $value));
 }
 
 echo $response->getBody();
