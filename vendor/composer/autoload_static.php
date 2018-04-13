@@ -15,6 +15,10 @@ class ComposerStaticInit43d941443379fce6cc80125ee69f7850
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'Z' => 
+        array (
+            'Zend\\Diactoros\\' => 15,
+        ),
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
@@ -40,6 +44,10 @@ class ComposerStaticInit43d941443379fce6cc80125ee69f7850
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'Zend\\Diactoros\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
         ),
         'Webmozart\\Assert\\' => 
         array (

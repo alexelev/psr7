@@ -1,28 +1,25 @@
 <?php
 
-use Framework\Http\RequestFactory;
-use Framework\Http\Response;
+use Framework\Http\ResponseSender;
+use Zend\Diactoros\Response\HtmlResponse;
+use Zend\Diactoros\ServerRequestFactory;
 
 chdir(dirname(__DIR__));
 require_once 'vendor/autoload.php';
 
 # Initialization
 
-$request = RequestFactory::fromGlobals();
+$request = ServerRequestFactory::fromGlobals();
 
 # Action
 
 $name = $request->getQueryParams()['name'] ?? 'Guest';
 
-$response = (new Response('Hello ' . $name . '!'))
-            ->withHeader('X-Developer', 'livalex');
+$response = (new HtmlResponse('Hello ' . $name . '!'))
+    ->withHeader('X-Developer', 'livalex');
 
 # Sending
 
-header('HTTP/1.0' . $response->getStatusCode() . ' ' . $response->getReasonPhrase());
-foreach($response->getHeaders() as $name => $value) {
-    header($name . ':' . implode(', ', $value));
-}
-
-echo $response->getBody();
+$sender = new ResponseSender();
+$sender->send($response);
 
