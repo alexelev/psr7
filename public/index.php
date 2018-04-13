@@ -1,72 +1,20 @@
 <?php
 
-//function getLang($default)
-//{
-//    return (isset($_GET['lang']) && !empty($_GET['lang'])) ? $_GET['lang'] :
-//        (isset($_COOKIE['lang']) && !empty($_COOKIE['lang'])) ? $_COOKIE['lang'] :
-//            (isset($_SESSION['lang']) && !empty($_SESSION['lang'])) ? $_SESSION['lang'] :
-//                (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) :
-//                    $default;
-//}
+use Framework\Http\Request;
 
-//function getLang($default) {
-//
-//    if (isset($_GET['lang']) && !empty($_GET['lang'])) {
-//        return $_GET['lang'];
-//    } elseif (isset($_COOKIE['lang']) && !empty($_COOKIE['lang'])) {
-//        return $_COOKIE['lang'];
-//    } elseif (isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
-//        return $_SESSION['lang'];
-//    } elseif (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-//        return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-//    } else {
-//        return $default;
-//    }
-//}
+chdir(dirname(__DIR__));
 
-function getLang(Request $request, $default)
-{
-    if (isset($request->getQueryParams()['lang']) && !empty($request->getQueryParams()['lang'])) {
-        return $request->getQueryParams()['lang'];
-    } elseif (isset($request->getCookies()['lang']) && !empty($request->getCookies()['lang'])) {
-        return $request->getCookies()['lang'];
-    } elseif (isset($request->getSessionData()['lang']) && !empty($request->getSessionData()['lang'])) {
-        return $request->getSessionData()['lang'];
-    } elseif (isset($request->getServerData()['HTTP_ACCEPT_LANGUAGE']) && !empty($request->getServerData()['HTTP_ACCEPT_LANGUAGE'])) {
-        return substr($request->getServerData()['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-    } else {
-        return $default;
-    }
-}
+require_once '/src/Framework/Http/Request.php';
 
-class Request
-{
-    public function getQueryParams(): array
-    {
-        return $_GET;
-    }
+# Initialization
 
-    public function getCookies(): array
-    {
-        return $_COOKIE;
-    }
+$request = new Request();
 
-    public function getSessionData(): array
-    {
-        return $_SESSION;
-    }
+# Action
 
-    public function getServerData(): array
-    {
-        return $_SERVER;
-    }
-}
 
-session_start();
-
-$name = $_GET['name'] ?? 'Guest';
-$lang = getLang(new Request(), 'en');
+$name = $request->getQueryParams()['name'] ?? 'Guest';
 
 header('X-Developer: livalex');
-echo "Hello, " . $name . "! Your language is " . $lang . PHP_EOL;
+echo "Hello, " . $name . "!" . PHP_EOL;
 
