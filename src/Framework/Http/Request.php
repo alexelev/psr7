@@ -25,7 +25,7 @@ class Request
         return $_SERVER;
     }
 
-    public function getParsedBody(): array
+    public function getParsedBody(): ?array
     {
         return $_POST ?: null;
     }
