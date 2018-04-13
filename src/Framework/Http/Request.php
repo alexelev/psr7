@@ -47,13 +47,15 @@ class Request
 
     public function withQueryParams(array $query): Request
     {
-        $this->queryParams = $query;
-        return $this;
+        $new = clone $this;
+        $new->queryParams = $query;
+        return $new;
     }
 
     public function withParsedBody($data): Request
     {
-        $this->parsedBody = $data;
-        return $this;
+        $new = clone $this;
+        $new->parsedBody = $data;
+        return $new;
     }
 }
