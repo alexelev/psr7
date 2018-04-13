@@ -1,8 +1,8 @@
 <?php
 
-use Framework\Http\ResponseSender;
 use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Diactoros\ServerRequestFactory;
+use Zend\Diactoros\Response\SapiEmitter;
 
 chdir(dirname(__DIR__));
 require_once 'vendor/autoload.php';
@@ -20,6 +20,6 @@ $response = (new HtmlResponse('Hello ' . $name . '!'))
 
 # Sending
 
-$sender = new ResponseSender();
-$sender->send($response);
+$sender = new SapiEmitter();
+$sender->emit($response);
 
