@@ -8,7 +8,8 @@ use PHPUnit\Framework\TestCase;
 class RequestTest extends TestCase
 {
 
-    protected function setUp(): void {
+    protected function setUp(): void
+    {
         parent::setUp();
 
         $_GET = [];
@@ -36,7 +37,7 @@ class RequestTest extends TestCase
         self::assertNull($request->getParsedBody());
     }
 
-    public function testParsedBody()
+    public function testParsedBody(): void
     {
         $_POST = $data = ['title' => 'Title'];
 
