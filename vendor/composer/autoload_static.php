@@ -10,11 +10,28 @@ class ComposerStaticInit43d941443379fce6cc80125ee69f7850
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     );
 
-    public static $firstCharsPsr4 = array (
-        'p' => true,
-        'W' => true,
-        'F' => true,
-        'D' => true,
+    public static $prefixLengthsPsr4 = array (
+        'p' => 
+        array (
+            'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'W' => 
+        array (
+            'Webmozart\\Assert\\' => 17,
+        ),
+        'P' => 
+        array (
+            'Psr\\Http\\Message\\' => 17,
+        ),
+        'F' => 
+        array (
+            'Framework\\' => 10,
+        ),
+        'D' => 
+        array (
+            'Doctrine\\Instantiator\\' => 22,
+            'DeepCopy\\' => 9,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -27,6 +44,10 @@ class ComposerStaticInit43d941443379fce6cc80125ee69f7850
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Framework\\' => 
         array (
@@ -591,7 +612,7 @@ class ComposerStaticInit43d941443379fce6cc80125ee69f7850
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->firstCharsPsr4 = ComposerStaticInit43d941443379fce6cc80125ee69f7850::$firstCharsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit43d941443379fce6cc80125ee69f7850::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit43d941443379fce6cc80125ee69f7850::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit43d941443379fce6cc80125ee69f7850::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit43d941443379fce6cc80125ee69f7850::$classMap;
