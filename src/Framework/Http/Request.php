@@ -2,8 +2,9 @@
 
 namespace Framework\Http;
 
+use Framework\Http\ServerRequestInterface;
 
-class Request
+class Request implements ServerRequestInterface
 {
 
     private $queryParams;

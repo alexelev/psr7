@@ -2,8 +2,9 @@
 
 namespace Framework\Http;
 
+use Framework\Http\ResponseInterface;
 
-class Response
+class Response implements ResponseInterface
 {
     private $headers = [];
     private $body;
