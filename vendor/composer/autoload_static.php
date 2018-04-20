@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit43d941443379fce6cc80125ee69f7850
+class ComposerStaticInitda1ae057db04cd1d7e1d55564c377e64
 {
     public static $files = array (
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
@@ -42,8 +42,8 @@ class ComposerStaticInit43d941443379fce6cc80125ee69f7850
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'Zend\\Diactoros\\' => 
         array (
@@ -620,10 +620,10 @@ class ComposerStaticInit43d941443379fce6cc80125ee69f7850
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit43d941443379fce6cc80125ee69f7850::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit43d941443379fce6cc80125ee69f7850::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit43d941443379fce6cc80125ee69f7850::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit43d941443379fce6cc80125ee69f7850::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitda1ae057db04cd1d7e1d55564c377e64::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitda1ae057db04cd1d7e1d55564c377e64::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitda1ae057db04cd1d7e1d55564c377e64::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitda1ae057db04cd1d7e1d55564c377e64::$classMap;
 
         }, null, ClassLoader::class);
     }
