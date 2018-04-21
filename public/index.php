@@ -50,21 +50,17 @@ if ($path === '/') {
     };
 
 } elseif (preg_match('/^\/(?P<name>blog)\/(?P<id>\d+)$/i', $path, $matches)) {
-    $id = $matches['id'];
 
-    if ($id <= 2) {
+    $request = $request->withAttribute('id', $matches['id']);
 
-        $action = function () use ($id) {
+    $action = function (ServerRequestInterface $request) {
+        $id = $request->getAttribute('id');
+        if ($id > 0 && $id <= 2) {
             return new HtmlResponse("<h1>Hello!</h1><p>I'm a post with <code>id</code> = {$id}</p>");
-        };
+        }
+        return new JsonResponse(['error' => 'Page is not exist'], 404);
+    };
 
-    } else {
-
-        $action = function () {
-            return new JsonResponse(['error' => 'Page is not exist'], 404);
-        };
-
-    }
 } else {
 
     $action = function () {
