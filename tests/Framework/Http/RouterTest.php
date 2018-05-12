@@ -38,7 +38,7 @@ class RouterTest extends TestCase
 
         $router = new Router($routes);
 
-        $this->expectException(\RequestNotMatchedException::class);
+        $this->expectException(RequestNotMatchedException::class);
         $router->match($this->buildRequest('DELETE', '/blog'));
     }
 
@@ -66,7 +66,7 @@ class RouterTest extends TestCase
 
         $result = $router->match($this->buildRequest('GET', '/blog/5'));
 
-        $this->expectException(\RequestNotMatchedException::class);
+        $this->expectException(RequestNotMatchedException::class);
         $router->match($this->buildRequest('GET', '/blog/slug'));
     }
 
@@ -79,15 +79,15 @@ class RouterTest extends TestCase
 
         $router = new Router($routes);
 
-        self::assertEquals('/blog', $this->generate('blog'));
-        self::assertEquals('/blog/5', $this->generate('blog_show', ['id' => '5']));
+        self::assertEquals('/blog', $router->generate('blog'));
+        self::assertEquals('/blog/5', $router->generate('blog_show', ['id' => '5']));
     }
     
     public function testGenerateMissingAttributes ()
     {
         $routes = new RouteCollection();
 
-        $routes->post($name = 'blog', '/blog/{id}', 'handler', ['id' => '\d+']);
+        $routes->post($name = 'blog_show', '/blog/{id}', 'handler', ['id' => '\d+']);
 
         $router = new Router($routes);
 
