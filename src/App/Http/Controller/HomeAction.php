@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Controller;
+namespace App\Http\Controller;
 
 
 use Psr\Http\Message\ServerRequestInterface;
@@ -11,6 +11,6 @@ class HomeAction
     public function __invoke(ServerRequestInterface $request): HtmlResponse
     {
         $name = $request->getQueryParams()['name'] ?? 'Guest';
-        return new HtmlResponse('Hello ' . $name . '!');
+        return new HtmlResponse('Hello, ' . $name . '!');
     }
 }
