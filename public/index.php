@@ -30,7 +30,7 @@ $routes->get('home', '/', Controller\HomeAction::class);
 $routes->get('about', '/about', Controller\AboutAction::class);
 $routes->get('blog', '/blog', Controller\Blog\IndexAction::class);
 $routes->get('blog_show', '/blog/{id}', Controller\Blog\ShowAction::class, ['id' => '\d+']);
-$routes->get('blog_public', '/blog/{id}', new PublicAction($routerco), ['id' => '\d+']);
+$routes->get('blog_public', '/blog/{id}', new PublicAction($router), ['id' => '\d+']);
 
 $resolver = new ActionResolver();
 
