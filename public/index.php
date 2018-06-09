@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controller\Blog\PublicAction;
 use Framework\Http\ActionResolver;
 use Framework\Http\Router\Exception\RequestNotMatchedException;
 use Framework\Http\Router\RouteCollection;
-use Framework\Http\Router\Router;
+use Framework\Http\Router\SimpleRouter;
 use Zend\Diactoros\Response\JsonResponse;
 use Zend\Diactoros\ServerRequestFactory;
 use Zend\Diactoros\Response\SapiEmitter;
@@ -23,12 +24,14 @@ function dd($d)
 # Initialization
 
 $routes = new RouteCollection();
+$router = new SimpleRouter($routes);
+
 $routes->get('home', '/', Controller\HomeAction::class);
 $routes->get('about', '/about', Controller\AboutAction::class);
 $routes->get('blog', '/blog', Controller\Blog\IndexAction::class);
 $routes->get('blog_show', '/blog/{id}', Controller\Blog\ShowAction::class, ['id' => '\d+']);
+$routes->get('blog_public', '/blog/{id}', new PublicAction($routerco), ['id' => '\d+']);
 
-$router = new Router($routes);
 $resolver = new ActionResolver();
 
 $request = ServerRequestFactory::fromGlobals();

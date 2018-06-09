@@ -2,7 +2,7 @@
 
 namespace App\Http\Controller\Blog;
 
-use Framework\Http\Router\Router;
+use Framework\Http\Router\SimpleRouter;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\JsonResponse;
 use Zend\Diactoros\Response\RedirectResponse;
@@ -11,7 +11,7 @@ class PublicAction
 {
     private $router;
 
-    public function __construct(Router $router)
+    public function __construct(SimpleRouter $router)
     {
         $this->router = $router;
     }
