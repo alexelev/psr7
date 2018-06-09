@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controller\Blog\PublicAction;
+use Aura\Router\RouterContainer;
 use Framework\Http\ActionResolver;
+use Framework\Http\Router\AuraRouterAdapter;
 use Framework\Http\Router\Exception\RequestNotMatchedException;
 use Framework\Http\Router\RouteCollection;
 use Framework\Http\Router\SimpleRouter;
@@ -23,14 +25,15 @@ function dd($d)
 
 # Initialization
 
-$routes = new RouteCollection();
-$router = new SimpleRouter($routes);
+$aura = new RouterContainer();
+$routes = $aura->getMap();
+$router = new AuraRouterAdapter($aura);
 
 $routes->get('home', '/', Controller\HomeAction::class);
 $routes->get('about', '/about', Controller\AboutAction::class);
 $routes->get('blog', '/blog', Controller\Blog\IndexAction::class);
-$routes->get('blog_show', '/blog/{id}', Controller\Blog\ShowAction::class, ['id' => '\d+']);
-$routes->get('blog_public', '/blog/{id}', new PublicAction($router), ['id' => '\d+']);
+$routes->get('blog_show', '/blog/{id}', Controller\Blog\ShowAction::class)->tokens(['id' => '\d+']);
+$routes->get('blog_public', '/blog/{id}', new PublicAction($router))->tokens(['id' => '\d+']);
 
 $resolver = new ActionResolver();
 
